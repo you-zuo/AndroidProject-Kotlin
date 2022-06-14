@@ -4,15 +4,20 @@ apply plugin: 'kotlin-android'
 android {
 
     // 编译源码版本
-    compileSdkVersion 30
+    compileSdkVersion 33
     defaultConfig {
         // 最低安装版本
         minSdkVersion 21
         // 目标适配版本
-        targetSdkVersion 30
+        targetSdkVersion 33
         versionName '1.0'
         versionCode 10
     }
+    buildFeatures {
+        // Enables Jetpack Compose for this module
+        compose true
+    }
+
 
     // 支持 Java JDK 8
     compileOptions {
@@ -22,6 +27,10 @@ android {
 
     kotlinOptions {
         jvmTarget = '1.8'
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion '1.1.1'
     }
 
     // 设置存放 so 文件的目录
@@ -48,6 +57,8 @@ android {
         // 禁用图片描述警告
         disable 'ContentDescription'
     }
+
+
 }
 
 afterEvaluate {
@@ -74,4 +85,14 @@ dependencies {
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.0'
     implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.3.1'
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1'
+    // Integration with activities
+    implementation 'androidx.activity:activity-compose:1.4.0'
+    // Compose Material Design
+    implementation 'androidx.compose.material:material:1.1.1'
+    // Animations
+    implementation 'androidx.compose.animation:animation:1.1.1'
+    // Tooling support (Previews, etc.)
+    implementation 'androidx.compose.ui:ui-tooling:1.1.1'
+    // Integration with ViewModels
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-compose:2.4.1'
 }

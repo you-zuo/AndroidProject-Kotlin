@@ -34,7 +34,7 @@ class SplashActivity : AppActivity() {
     override fun initView() {
         // 设置动画监听
         lottieView?.addAnimatorListener(object : AnimatorListenerAdapter() {
-            override fun onAnimationEnd(animation: Animator?) {
+            override fun onAnimationEnd(animation: Animator) {
                 lottieView?.removeAnimatorListener(this)
                 HomeActivity.start(this@SplashActivity)
                 finish()
@@ -72,6 +72,7 @@ class SplashActivity : AppActivity() {
             .hideBar(BarHide.FLAG_HIDE_BAR)
     }
 
+    @Deprecated("Deprecated in Java")
     override fun onBackPressed() {
         // 禁用返回键
         //super.onBackPressed();
